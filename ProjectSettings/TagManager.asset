@@ -18,7 +18,7 @@ TagManager:
   - Background
   - Player
   - Enemy
-  - 
+  - Dead Player
   - 
   - 
   - 
@@ -41,15 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 1490532723
+    locked: 0
+  - name: Water
+    uniqueID: 1731274515
+    locked: 0
   - name: Foreground
     uniqueID: 2426182741
-    locked: 0
-  - name: Player
-    uniqueID: 1912360577
     locked: 0
   - name: Enemy
     uniqueID: 666253879
     locked: 0
-  - name: Background
-    uniqueID: 1490532723
+  - name: Player
+    uniqueID: 1912360577
     locked: 0

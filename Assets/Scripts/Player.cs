@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     private string WALKING_ANIMATION = "IsWalking";
     private string CLIMBING_ANIMATION = "IsClimbing";
     private string DYING_ANIMATION = "IsDying";
+    private string DEAD_PLAYER_LAYER = "Dead Player";
+    private string WATER_LAYER = "Water";
 
     private void Start()
     {
@@ -38,11 +40,9 @@ public class Player : MonoBehaviour
     {
         if (!isAlive)
         {
-            Debug.Log("Not Alive");
             return;
         }
 
-        Debug.Log("Alive");
         MovePlayer();
         Jump();
         Climb();
@@ -56,10 +56,10 @@ public class Player : MonoBehaviour
         {
             return;
         }
-        
+
+        isAlive = false;
+        gameObject.layer = LayerMask.NameToLayer(DEAD_PLAYER_LAYER);        
         animator.SetTrigger(DYING_ANIMATION);
-/*        rigidbody2D.veloci
-*/        isAlive = false;
     }
 
     private void MovePlayer()
@@ -170,4 +170,10 @@ public class Player : MonoBehaviour
             Debug.LogError($"has set a new speed value {value}, that is out of a range");
         }        
     }
+
+  /*  private void OnTriggerEnter2D(Collider2D collision)
+    {
+        GameObject otherGameObject = collision.gameObject;
+        if(!otherGameObject.layer.==LayerMask.NameToLayer())
+    }*/
 }
