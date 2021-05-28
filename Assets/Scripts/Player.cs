@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     private string DYING_ANIMATION = "IsDying";
     private string DEAD_PLAYER_LAYER = "Dead Player";
     private string WATER_LAYER = "Water";
+    private string OBSTACLE_LAYER = "Obstacle";
 
     private void Start()
     {
@@ -56,9 +57,14 @@ public class Player : MonoBehaviour
         {
             return;
         }
+        Debug.Log("Died from Enemy");
+        DyingAnimation();
+    }
 
+    private void DyingAnimation()
+    {
         isAlive = false;
-        gameObject.layer = LayerMask.NameToLayer(DEAD_PLAYER_LAYER);        
+        gameObject.layer = LayerMask.NameToLayer(DEAD_PLAYER_LAYER);
         animator.SetTrigger(DYING_ANIMATION);
     }
 
@@ -171,9 +177,20 @@ public class Player : MonoBehaviour
         }        
     }
 
-  /*  private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject otherGameObject = collision.gameObject;
-        if(!otherGameObject.layer.==LayerMask.NameToLayer())
-    }*/
+
+        if (otherGameObject.layer == LayerMask.NameToLayer(WATER_LAYER))
+        {            
+            Debug.Log("Died from water");
+            DyingAnimation();
+        }
+
+        if (otherGameObject.layer == LayerMask.NameToLayer(OBSTACLE_LAYER))
+        {
+            Debug.Log("Died from Obstacle");
+            DyingAnimation();
+        }
+    }
 }
