@@ -20,7 +20,7 @@ TagManager:
   - Enemy
   - Dead Player
   - Obstacle
-  - 
+  - Atribute
   - 
   - 
   - 
@@ -55,6 +55,9 @@ TagManager:
     locked: 0
   - name: Enemy
     uniqueID: 666253879
+    locked: 0
+  - name: Atribute
+    uniqueID: 3823694863
     locked: 0
   - name: Player
     uniqueID: 1912360577

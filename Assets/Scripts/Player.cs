@@ -64,8 +64,15 @@ public class Player : MonoBehaviour
     private void DyingAnimation()
     {
         isAlive = false;
-        gameObject.layer = LayerMask.NameToLayer(DEAD_PLAYER_LAYER);
         animator.SetTrigger(DYING_ANIMATION);
+        StartCoroutine(SetStaticRidgidBody());       
+    }
+
+    IEnumerator SetStaticRidgidBody()
+    {
+        yield return new WaitForSeconds(1f);
+        rigidbody2D.bodyType = RigidbodyType2D.Static;        
+        gameObject.layer = LayerMask.NameToLayer(DEAD_PLAYER_LAYER);
     }
 
     private void MovePlayer()
