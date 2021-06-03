@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagerController : MonoBehaviour
 {
+    //cached references
+    [SerializeField] private GameObject mainMenuCanvas;
+    [SerializeField] private GameObject instructionCanvas;
+
     //chached string parameters
     private string MAIN_MENU_SCENE = "Main_Menu";
     private string GAME_OVER_SCENE = "Game_Over";
@@ -47,4 +51,11 @@ public class SceneManagerController : MonoBehaviour
             Debug.LogError("Cannot find given scene "+CERTAIN_SCENE_NAME);
         }
     }
+
+    public void LoadInstructionCanvas()
+    {       
+        mainMenuCanvas.SetActive(false);
+        instructionCanvas.SetActive(true);
+    }
+
 }

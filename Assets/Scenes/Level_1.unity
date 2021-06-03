@@ -5521,17 +5521,42 @@ PrefabInstance:
     - target: {fileID: 7906327591728881277, guid: b20e4005337c7624487cd74f750a16cc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -33.788292
+      value: -5.25819
       objectReference: {fileID: 0}
     - target: {fileID: 7906327591728881277, guid: b20e4005337c7624487cd74f750a16cc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0050919503
+      value: -0.3848372
+      objectReference: {fileID: 0}
+    - target: {fileID: 7906327591728881277, guid: b20e4005337c7624487cd74f750a16cc,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7906327591728881277, guid: b20e4005337c7624487cd74f750a16cc,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7906327591728881277, guid: b20e4005337c7624487cd74f750a16cc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 7906327591728881282, guid: b20e4005337c7624487cd74f750a16cc,
         type: 3}
       propertyPath: orthographic size
-      value: 4
+      value: 4.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 7906327591728881282, guid: b20e4005337c7624487cd74f750a16cc,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7906327591728881282, guid: b20e4005337c7624487cd74f750a16cc,
+        type: 3}
+      propertyPath: far clip plane
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7906327592331666989, guid: b20e4005337c7624487cd74f750a16cc,
         type: 3}
@@ -5551,7 +5576,7 @@ PrefabInstance:
     - target: {fileID: 7906327592380580822, guid: b20e4005337c7624487cd74f750a16cc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.4148464
+      value: -3.0180836
       objectReference: {fileID: 0}
     - target: {fileID: 7906327592380580822, guid: b20e4005337c7624487cd74f750a16cc,
         type: 3}
@@ -5566,7 +5591,7 @@ PrefabInstance:
     - target: {fileID: 7906327592308370561, guid: b20e4005337c7624487cd74f750a16cc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.362055
+      value: -4.6959476
       objectReference: {fileID: 0}
     - target: {fileID: 7906327592308370561, guid: b20e4005337c7624487cd74f750a16cc,
         type: 3}
@@ -5581,17 +5606,37 @@ PrefabInstance:
     - target: {fileID: 7906327593239803148, guid: b20e4005337c7624487cd74f750a16cc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.5574245
+      value: -3.9540844
       objectReference: {fileID: 0}
     - target: {fileID: 7906327593239803148, guid: b20e4005337c7624487cd74f750a16cc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.1535997
+      value: 2.1519198
+      objectReference: {fileID: 0}
+    - target: {fileID: 7906327593239803148, guid: b20e4005337c7624487cd74f750a16cc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7906327593239803151, guid: b20e4005337c7624487cd74f750a16cc,
         type: 3}
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 2044603492}
+    - target: {fileID: 7906327593239803151, guid: b20e4005337c7624487cd74f750a16cc,
+        type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 4.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 7906327593239803151, guid: b20e4005337c7624487cd74f750a16cc,
+        type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 1.7777778
+      objectReference: {fileID: 0}
+    - target: {fileID: 7906327591543634462, guid: b20e4005337c7624487cd74f750a16cc,
+        type: 3}
+      propertyPath: m_LookaheadTime
+      value: 0.072
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b20e4005337c7624487cd74f750a16cc, type: 3}
