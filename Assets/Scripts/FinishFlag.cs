@@ -6,9 +6,11 @@ public class FinishFlag : MonoBehaviour
 {
     //chached references
     private SceneManagerController sceneManagerController;
+    [SerializeField] private GameObject successText;
+    private bool hasFinishedLevel = false;
 
     //configuration parameters
-    [Range(0f, 1f)] [SerializeField] private float frozenTime=0.2f;
+    [Range(0f, 1f)] [SerializeField] private float frozenTime=0.2f;    
 
     // Start is called before the first frame update
     void Start()
@@ -18,15 +20,21 @@ public class FinishFlag : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("trigger entered");
-        StartCoroutine(LoadNextSceneAnimation());        
+        if (!hasFinishedLevel)
+        {
+            hasFinishedLevel = true;
+            StartCoroutine(ProcessNextSceneTranslation());
+        }
+        
     }
 
-    IEnumerator LoadNextSceneAnimation()
-    {
+    IEnumerator ProcessNextSceneTranslation()
+    {        
+        GameObject newSuccessCanvas = Instantiate(successText)as GameObject;
         Time.timeScale = frozenTime;
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
         Time.timeScale = 1;
+        Destroy(newSuccessCanvas);
         sceneManagerController.LoadNextScene();
     }
 }

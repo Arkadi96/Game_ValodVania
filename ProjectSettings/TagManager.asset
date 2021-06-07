@@ -21,7 +21,7 @@ TagManager:
   - Dead Player
   - Obstacle
   - Atribute
-  - 
+  - Missile
   - 
   - 
   - 
@@ -61,4 +61,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1912360577
+    locked: 0
+  - name: Explosions
+    uniqueID: 1756737879
     locked: 0

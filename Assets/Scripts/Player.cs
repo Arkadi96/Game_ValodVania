@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +15,7 @@ public class Player : MonoBehaviour
     private CapsuleCollider2D bodyCollider2D;
     private BoxCollider2D feetColider2D;
     private Animator animator;
+    private GameSession gameSession;
     private bool isAlive = true;
     
     //string values
@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     private string DEAD_PLAYER_LAYER = "Dead Player";
     private string WATER_LAYER = "Water";
     private string OBSTACLE_LAYER = "Obstacle";
+    private string MISSILE_LAYER = "Missile";
 
     private void Start()
     {
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         bodyCollider2D = GetComponent<CapsuleCollider2D>();
         feetColider2D = GetComponent<BoxCollider2D>();
+        gameSession = FindObjectOfType<GameSession>();
     }
 
     private void Update()
@@ -48,24 +50,14 @@ public class Player : MonoBehaviour
         Jump();
         Climb();
         FlipSprite();
-        Die();
     }
-
-    private void Die()
-    {
-        if (!bodyCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemy")))
-        {
-            return;
-        }
-        Debug.Log("Died from Enemy");
-        DyingAnimation();
-    }
-
-    private void DyingAnimation()
+        
+    private void ProcessDying()
     {
         isAlive = false;
         animator.SetTrigger(DYING_ANIMATION);
-        StartCoroutine(SetStaticRidgidBody());       
+        StartCoroutine(SetStaticRidgidBody());
+        gameSession.DecrementTheLife();
     }
 
     IEnumerator SetStaticRidgidBody()
@@ -191,13 +183,19 @@ public class Player : MonoBehaviour
         if (otherGameObject.layer == LayerMask.NameToLayer(WATER_LAYER))
         {            
             Debug.Log("Died from water");
-            DyingAnimation();
+            ProcessDying();
         }
 
         if (otherGameObject.layer == LayerMask.NameToLayer(OBSTACLE_LAYER))
         {
             Debug.Log("Died from Obstacle");
-            DyingAnimation();
+            ProcessDying();
+        }
+
+        if (otherGameObject.layer == LayerMask.NameToLayer(MISSILE_LAYER))
+        {
+            Debug.Log("Died from Missile");
+            ProcessDying();
         }
     }
 }
