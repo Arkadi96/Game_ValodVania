@@ -43,5 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d797df7116189343982cde0f9362919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuCanvas: {fileID: 0}
-  instructionCanvas: {fileID: 0}
+  mainMenuCanvas: {fileID: 8156885296705186245, guid: 7fe238dfd8a38a644b68e57cff3098a2,
+    type: 3}
+  instructionCanvas: {fileID: 9155731457972989209, guid: 323a4d1b0aa6163439b1dc5bcaf1d8d0,
+    type: 3}

@@ -8,6 +8,7 @@ public class GameSession : MonoBehaviour
 {
     //configuration parameters
     [SerializeField] private int lifeCount = 3;
+    private int currentLevelNumber=1;
     private bool isAlive = true;
 
     //cached references    
@@ -89,5 +90,20 @@ public class GameSession : MonoBehaviour
     public void IncrementTheLife()
     {
         lifeCount++;
+    }
+
+    public void IncrementTheLevelNumber()
+    {
+        currentLevelNumber++;
+    }
+
+    public int GetPlayerLivesCount()
+    {
+        return lifeCount;
+    }
+
+    public int GetLevelNumber()
+    {
+        return currentLevelNumber;
     }
 }

@@ -7,6 +7,7 @@ public class FinishFlag : MonoBehaviour
     //chached references
     private SceneManagerController sceneManagerController;
     [SerializeField] private GameObject successText;
+    private GameSession gameSession;
     private bool hasFinishedLevel = false;
 
     //configuration parameters
@@ -15,7 +16,8 @@ public class FinishFlag : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sceneManagerController = FindObjectOfType<SceneManagerController>();    
+        sceneManagerController = FindObjectOfType<SceneManagerController>();
+        gameSession = FindObjectOfType<GameSession>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -24,17 +26,17 @@ public class FinishFlag : MonoBehaviour
         {
             hasFinishedLevel = true;
             StartCoroutine(ProcessNextSceneTranslation());
-        }
-        
+        }        
     }
 
     IEnumerator ProcessNextSceneTranslation()
     {        
         GameObject newSuccessCanvas = Instantiate(successText)as GameObject;
         Time.timeScale = frozenTime;
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.0f);
         Time.timeScale = 1;
         Destroy(newSuccessCanvas);
+        gameSession.IncrementTheLevelNumber();
         sceneManagerController.LoadNextScene();
     }
 }

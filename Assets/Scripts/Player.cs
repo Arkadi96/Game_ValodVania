@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     private string WATER_LAYER = "Water";
     private string OBSTACLE_LAYER = "Obstacle";
     private string MISSILE_LAYER = "Missile";
+    private string ENEMY_LAYER = "Enemy";
 
     private void Start()
     {
@@ -56,15 +57,9 @@ public class Player : MonoBehaviour
     {
         isAlive = false;
         animator.SetTrigger(DYING_ANIMATION);
-        StartCoroutine(SetStaticRidgidBody());
-        gameSession.DecrementTheLife();
-    }
-
-    IEnumerator SetStaticRidgidBody()
-    {
-        yield return new WaitForSeconds(1f);
-        rigidbody2D.bodyType = RigidbodyType2D.Static;        
+        /*rigidbody2D.bodyType = RigidbodyType2D.Static;*/
         gameObject.layer = LayerMask.NameToLayer(DEAD_PLAYER_LAYER);
+        gameSession.DecrementTheLife();
     }
 
     private void MovePlayer()
@@ -178,24 +173,10 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject otherGameObject = collision.gameObject;
-
-        if (otherGameObject.layer == LayerMask.NameToLayer(WATER_LAYER))
+        Debug.Log("trigger entered");
+        if (rigidbody2D.IsTouchingLayers(LayerMask.GetMask(MISSILE_LAYER, WATER_LAYER, OBSTACLE_LAYER, ENEMY_LAYER))) 
         {            
-            Debug.Log("Died from water");
             ProcessDying();
-        }
-
-        if (otherGameObject.layer == LayerMask.NameToLayer(OBSTACLE_LAYER))
-        {
-            Debug.Log("Died from Obstacle");
-            ProcessDying();
-        }
-
-        if (otherGameObject.layer == LayerMask.NameToLayer(MISSILE_LAYER))
-        {
-            Debug.Log("Died from Missile");
-            ProcessDying();
-        }
+        }        
     }
 }
