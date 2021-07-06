@@ -173,10 +173,17 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("trigger entered");
-        if (rigidbody2D.IsTouchingLayers(LayerMask.GetMask(MISSILE_LAYER, WATER_LAYER, OBSTACLE_LAYER, ENEMY_LAYER))) 
-        {            
-            ProcessDying();
-        }        
+        if (rigidbody2D.IsTouchingLayers(LayerMask.GetMask(MISSILE_LAYER, WATER_LAYER, OBSTACLE_LAYER, ENEMY_LAYER)))
+        {
+            if (collision.gameObject.GetComponent<CannonBullet>())
+            {
+                ProcessDying();
+                FindObjectOfType<CannonBullet>().DestroyBullet();
+            }
+            else
+            {
+                ProcessDying();
+            }            
+        }
     }
 }

@@ -6,11 +6,12 @@ using UnityEngine;
 public class CannonBullet : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed = 5.0f;
-    [SerializeField] private GameObject explosionPVF;
+    [SerializeField] private GameObject explosionPVF;    
     private Transform target;
     private Rigidbody2D rigidbody2D;
     private float rotateSpeed = 200f;
     private float objectsDestroyingTime = 3.0f;
+    private string PLAYER_LAYER = "Player";
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +22,13 @@ public class CannonBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        DestroyBullet();
+        if (!rigidbody2D.IsTouchingLayers(LayerMask.GetMask(PLAYER_LAYER)))
+        {
+            DestroyBullet();
+        }        
     }
 
-    private void DestroyBullet ()
+    public void DestroyBullet ()
     {
         GameObject newExplosion = Instantiate(explosionPVF, transform.position, transform.rotation);
         Destroy(gameObject);
