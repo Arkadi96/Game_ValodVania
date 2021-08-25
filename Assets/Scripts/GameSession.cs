@@ -8,6 +8,8 @@ public class GameSession : MonoBehaviour
 {
     //configuration parameters
     [SerializeField] private int lifeCount = 3;
+    [SerializeField] private int coinsToLife = 3;
+    private int coinsCount = 0;
     private int currentLevelNumber=1;
     private bool isAlive = true;
 
@@ -39,7 +41,13 @@ public class GameSession : MonoBehaviour
     {
         if (lifeCount>=1)
         {
-            return;
+            if (coinsCount >= coinsToLife)
+            {
+                Debug.Log("I 'm here");
+                IncrementTheLife();
+                coinsCount -= coinsToLife;
+            }
+            else return;
         }
         else if(isAlive)
         {
@@ -51,6 +59,8 @@ public class GameSession : MonoBehaviour
             Debug.Log("nor has life nor is alive");
             return;
         }
+
+      
     }
 
     private void ProcessPlayerDeath()
@@ -89,12 +99,17 @@ public class GameSession : MonoBehaviour
 
     public void IncrementTheLife()
     {
-        lifeCount++;
+        lifeCount+=1;
     }
 
     public void IncrementTheLevelNumber()
     {
-        currentLevelNumber++;
+        currentLevelNumber+=1;
+    }
+
+    public void IncrementTheCoins()
+    {
+        coinsCount+=1;
     }
 
     public int GetPlayerLivesCount()
@@ -105,5 +120,10 @@ public class GameSession : MonoBehaviour
     public int GetLevelNumber()
     {
         return currentLevelNumber;
+    }
+
+    public int GetCoinsCount()
+    {
+        return coinsCount;
     }
 }

@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     private string OBSTACLE_LAYER = "Obstacle";
     private string MISSILE_LAYER = "Missile";
     private string ENEMY_LAYER = "Enemy";
+    private string COINS_LAYER = "Coins";
 
     private void Start()
     {
@@ -178,12 +179,18 @@ public class Player : MonoBehaviour
             if (collision.gameObject.GetComponent<CannonBullet>())
             {
                 ProcessDying();
-                FindObjectOfType<CannonBullet>().DestroyBullet();
+                collision.gameObject.GetComponent<CannonBullet>().DestroyBullet();                
             }
             else
             {
                 ProcessDying();
             }            
+        }
+
+        if (rigidbody2D.IsTouchingLayers(LayerMask.GetMask(COINS_LAYER)))
+        {
+            gameSession.IncrementTheCoins();
+            Destroy(collision.gameObject);
         }
     }
 }

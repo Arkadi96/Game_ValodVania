@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeCount: 3
+  coinsToLife: 5
   wastedText: {fileID: 1114973166817319600, guid: 79939d599cf19134b9cc05aa61c46c10,
     type: 3}
